@@ -117,7 +117,7 @@ class _CitySelectionScreenState extends State<CitySelectionScreen> {
               if (state is GetCurrentLocationState) {
               } else if (state is UpdateLocationState) {
                 if (state.hasPlace) {
-                  return Navigator.of(context).pop([state.place, state.latLng]);
+                  Navigator.of(context).pop([state.place, state.latLng]);
                 } else {
                   debugPrint('${state.message}');
                 }

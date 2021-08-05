@@ -57,7 +57,6 @@ class WeatherBloc extends Bloc<WeatherEvent, WeatherState> {
       );
     } else if (event is GetWeatherByLocation) {
       //yield LoadingWeather();
-      print("Location0.0 ${event.latLng.latitude}, ${event.latLng.longitude}");
       final failurOrWeather = await getWeatherDataBylocation(event.latLng);
       yield* failurOrWeather.fold((failure) async* {
         String errorMessage = _mapFailureToMessage(failure);

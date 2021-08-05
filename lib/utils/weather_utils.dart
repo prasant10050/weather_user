@@ -128,7 +128,6 @@ class MapString {
       default:
         myIcon = WeatherIcons.wiNa;
     }
-    print("Icon ${input}");
     return Icon(
       myIcon,
       size: iconSize,

@@ -42,9 +42,6 @@ dependencies:
   flutter_svg: ^0.22.0
   another_transformer_page_view: ^1.0.1
   intl:
-  flutter_weather_icons:
-    git:
-      url: https://github.com/mix1009/flutter_weather_icons.git
   shared_preferences: ^2.0.6
 
 dev_dependencies:

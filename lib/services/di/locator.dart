@@ -12,6 +12,7 @@ import 'package:weather_user/app/domain/use_cases/get_weather_forecast_by_latlng
 import 'package:weather_user/app/domain/use_cases/input_checker.dart';
 import 'package:weather_user/app/presentation/manager/permission/app_permission_bloc.dart';
 import 'package:weather_user/app/presentation/manager/weather/weather_bloc.dart';
+import 'package:weather_user/services/dao/location_dao.dart';
 import 'package:weather_user/services/network/network_info.dart';
 import 'package:weather_user/utils/network/data_connection_checker.dart';
 
@@ -44,6 +45,10 @@ Future<void> setupLocator() async {
   sl.registerLazySingleton<WeatherRemoteDataSource>(() => WeatherRemoteDataImpl(
         client: sl(),
       ));
+  sl.registerLazySingleton(() => StoredLocation());
+  sl.registerLazySingleton<List<StoredLocation>>(
+      () => List<StoredLocation>.empty());
+  sl.registerLazySingleton(() => LocationDao(sl()));
   sl.registerFactory(
     () => WeatherBloc(
       inputChecker: sl(),

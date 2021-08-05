@@ -144,15 +144,6 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
-  flutter_weather_icons:
-    dependency: "direct main"
-    description:
-      path: "."
-      ref: HEAD
-      resolved-ref: d9cb1d90a3d721d99dce396078a454d0e17076d9
-      url: "https://github.com/mix1009/flutter_weather_icons.git"
-    source: git
-    version: "1.0.2"
   flutter_web_plugins:
     dependency: transitive
     description: flutter

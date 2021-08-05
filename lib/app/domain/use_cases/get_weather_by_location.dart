@@ -12,7 +12,6 @@ class GetWeatherDataBylocation extends Usecase<WeatherModel, LatLng> {
 
   @override
   Future<Either<Failure, WeatherModel>> call(LatLng params) async {
-    print("Location ${params.latitude}, ${params.longitude}");
     return await weatherRepository.getWeatherBylocation(params);
   }
 }

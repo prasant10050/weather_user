@@ -167,11 +167,11 @@ class Sys {
   final int sunset;
 
   factory Sys.fromJson(Map<String, dynamic> json) => Sys(
-        type: json['type'] == null ? null : json['type'],
-        id: json['id'] == null ? null : json['id'],
-        country: json['country'] == null ? null : json['country'],
-        sunrise: json['sunrise'] == null ? null : json['sunrise'],
-        sunset: json['sunset'] == null ? null : json['sunset'],
+        type: json['type'] == null ? 0 : json['type'],
+        id: json['id'] == null ? 0 : json['id'],
+        country: json['country'] == '' ? null : json['country'],
+        sunrise: json['sunrise'] == 0 ? null : json['sunrise'],
+        sunset: json['sunset'] == 0 ? null : json['sunset'],
       );
 
   Map<String, dynamic> toJson() => {
@@ -197,10 +197,10 @@ class Weather {
   final String icon;
 
   factory Weather.fromJson(Map<String, dynamic> json) => Weather(
-        id: json['id'] == null ? null : json['id'],
-        main: json['main'] == null ? null : json['main'],
-        description: json['description'] == null ? null : json['description'],
-        icon: json['icon'] == null ? null : json['icon'],
+        id: json['id'] == null ? 0 : json['id'],
+        main: json['main'] == null ? '' : json['main'],
+        description: json['description'] == '' ? null : json['description'],
+        icon: json['icon'] == '' ? null : json['icon'],
       );
 
   Map<String, dynamic> toJson() => {

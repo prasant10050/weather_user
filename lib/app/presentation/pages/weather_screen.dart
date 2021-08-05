@@ -10,6 +10,7 @@ import 'package:weather_user/app/presentation/widgets/error_widget.dart';
 import 'package:weather_user/app/presentation/widgets/single_weather.dart';
 import 'package:weather_user/app/presentation/widgets/slider_dot.dart';
 import 'package:weather_user/services/dao/location_dao.dart';
+import 'package:weather_user/services/di/locator.dart';
 import 'package:weather_user/utils/weather_status.dart';
 
 import 'city_selection.dart';
@@ -29,7 +30,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
   List<WeatherForeCastModel> localListOfWeatherForecastModel = [];
   int _currentPage = 0;
   late WeatherBloc weatherBloc;
-  LocationDao locationDao = LocationDao();
+  LocationDao locationDao = sl<LocationDao>();
 
   _onPageChanged(int? index) {
     weatherBloc.add(ChangePageIndex(index!));
@@ -52,6 +53,15 @@ class _WeatherScreenState extends State<WeatherScreen> {
     await Future.delayed(Duration(milliseconds: 1000));
     //Johor Bahru
     weatherBloc.add(GetWeatherByCityName(cityName: 'Johor Bahru'));
+    List<StoredLocation> storedLocation =
+        await locationDao.read('selectedCity');
+    storedLocation.asMap().forEach((key, value) {
+      if (value.isMyCurrentLocation) {
+        weatherBloc.add(GetWeatherByLocation(value.latLng!));
+      } else {
+        weatherBloc.add(GetWeatherByCityName(cityName: value.place!));
+      }
+    });
   }
 
   @override
@@ -181,9 +191,19 @@ class _WeatherScreenState extends State<WeatherScreen> {
                               )
                                   .then((value) {
                                 if (value is String) {
+                                  locationDao.save('selectedCity',
+                                      StoredLocation(place: value));
                                   BlocProvider.of<WeatherBloc>(context).add(
-                                      GetWeatherByCityName(cityName: value[0]));
+                                      GetWeatherByCityName(cityName: value));
                                 } else {
+                                  locationDao.save(
+                                      'selectedCity',
+                                      StoredLocation(
+                                          place: value[0],
+                                          latLng: LatLng(
+                                              latitude: value[1].latitude,
+                                              longitude: value[1].longitude),
+                                          isMyCurrentLocation: true));
                                   BlocProvider.of<WeatherBloc>(context).add(
                                       GetWeatherByLocation(LatLng(
                                           latitude: value[1].latitude,
