@@ -1,0 +1,26 @@
+import 'package:flutter/material.dart';
+
+const kWhite = Colors.white;
+const kLightGrey = const Color(0xFFE8E8E8);
+const kDarkGrey = const Color(0xFF303030);
+const kPrimaryColor = const Color(0xFF593AE3);
+const kAccentColor = const Color(0xFF536DFE);
+const kPrimaryColorDark = const Color(0xFF303F9F);
+const kPrimaryColorLight = const Color(0xFFC5CAE9);
+const kBackgroundColor = const Color(0xFFF7F7F7);
+const kDarkBackgroundColor = const Color(0xFF243140);
+const kTextThemeColor = const Color(0xFF212121);
+const kPrimaryTextThemeColor = const Color(0xFFFFFFFF);
+const kButtonColor = const Color.fromRGBO(26, 169, 243, 1);
+const kAppBackgroundColor = const Color.fromRGBO(36, 49, 64, 1);
+const kAlertColor = const Color(0xFFE24E24);
+const kTransparentColor = Colors.transparent;
+const kIdleButtonColor = const Color.fromRGBO(26, 169, 243, 0.3);
+const kProcessButtonColor = const Color.fromRGBO(26, 169, 243, 1.0);
+const kIdleTextColor = const Color.fromRGBO(255, 255, 255, 0.5);
+const kProcessTextColor = const Color.fromRGBO(255, 255, 255, 1.0);
+const kCancelButtonColor = const Color(0xFFE03200);
+const kBackgroundColorClicked = const Color(0xFFDCD6F9);
+const kPrimaryTextColor = const Color(0xFF000000);
+const kSecondaryTextColor = const Color(0xFF3E4958);
+const kDisabledButtonColor = const Color(0xFF979797);
